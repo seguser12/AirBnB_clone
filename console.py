@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
         if cls_name not in self.classes:
             print("** class doesn't exist **")
             return
-        my_model = self.classes[cls_name]
+        my_model = self.classes[cls_name]()
         my_model.save()
         print(my_model.id)
 
