@@ -31,8 +31,8 @@ class TestBaseModel(unittest.TestCase):
                 filename = '{0}/{1}'.format(root, file)
                 filenames.append(filename)
         check = style.check_files(filenames)
-        self.assertEqual(check.total_errors, 0, 
-                       'PEP8 errors: %d' % check.total_errors)
+        self.assertEqual(check.total_errors, 0,
+                         'PEP8 errors: %d' % check.total_errors)
 
     def test_check_BaseModel_documentation(self):
         '''check to see class and methods are properly documented'''
@@ -50,12 +50,12 @@ class TestBaseModel(unittest.TestCase):
         '''test if instance attribute is properly assigned'''
         self.assertIsInstance(self.my_model, type(BaseModel()))
 
-    def test_BaseModel_save(self):
+    def test_save(self):
         '''test for BaseModel save method'''
         self.my_model.save()
         self.assertNotEqual(self.my_model.created_at, self.my_model.updated_at)
 
-    def test_BaseModel_to_dict(self):
+    def test_to_dict(self):
         '''test for BaseModel to_dict method'''
         my_model_json = self.my_model.to_dict()
         self.assertIsInstance(my_model_json['created_at'], str)

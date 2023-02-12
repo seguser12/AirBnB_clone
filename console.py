@@ -10,7 +10,13 @@ class HBNBCommand(cmd.Cmd):
     '''entry point of command interpreter'''
     prompt = '(hbnb) '
     classes = {
-            'BaseModel': BaseModel
+            'BaseModel': BaseModel,
+            'User': User,
+            'State': State,
+            'City': City,
+            'Amenity': Amenity,
+            'Place': Place,
+            'Review': Review
             }
 
     def emptyline(self):
@@ -33,7 +39,7 @@ class HBNBCommand(cmd.Cmd):
         if cls_name not in self.classes:
             print("** class doesn't exist **")
             return
-        my_model = BaseModel()
+        my_model = self.classes[cls_name]
         my_model.save()
         print(my_model.id)
 
