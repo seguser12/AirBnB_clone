@@ -31,7 +31,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
         if cls_name not in self.classes:
-            print("** class doesn't exit **")
+            print("** class doesn't exist **")
             return
         my_model = BaseModel()
         my_model.save()
@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
         cls_name = args[0]
 
         if cls_name not in self.classes:
-            print("** class doesn't exit **")
+            print("** class doesn't exist **")
             return
         if len(args) < 2:
             print("** instance id missing **")
@@ -72,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
         id = args[1] if len(args) > 1 else None
 
         if cls_name not in self.classes:
-            print("** class doesn't exit **")
+            print("** class doesn't exist **")
             return
         if not id:
             print("** instance id missing **")
