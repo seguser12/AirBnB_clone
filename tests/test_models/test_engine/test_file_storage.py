@@ -52,6 +52,12 @@ class TestFileStorage(unittest.TestCase):
         for values in self.obj.values():
             load = values
         self.assertEqual(self.my_model.to_dict()['id'], load.to_dict()['id'])
+        self.assertEqual(storage.reload(), None)
+
+        with open('file.json', 'w') as f:
+            pass
+        with self.assertRaises(ValueError):
+            storage.reload()
 
     def test_type_path(self):
         '''test _file_path is str'''
