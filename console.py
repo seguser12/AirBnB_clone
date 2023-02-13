@@ -138,7 +138,7 @@ class HBNBCommand(cmd.Cmd):
         key = f"{cls_name}.{id}"
         my_models = storage.all()
         if key not in my_models:
-            print("**no instance found **")
+            print("** no instance found **")
             return
         if not attr_name:
             print("** attribute name missing **")
