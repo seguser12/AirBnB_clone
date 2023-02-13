@@ -5,6 +5,7 @@ import unittest
 from models.base_model import BaseModel
 import pep8
 import os
+import json
 
 
 class TestBaseModel(unittest.TestCase):
@@ -54,6 +55,10 @@ class TestBaseModel(unittest.TestCase):
         '''test for BaseModel save method'''
         self.my_model.save()
         self.assertNotEqual(self.my_model.created_at, self.my_model.updated_at)
+        key = 'BaseModel' + "." + self.my_model.id
+        with open('file.json', 'r') as f:
+            j = json.load(f)
+            self.assertEqual(j[key], self.my_model.to_dict())
 
     def test_to_dict(self):
         '''test for BaseModel to_dict method'''
