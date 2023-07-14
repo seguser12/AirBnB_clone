@@ -4,6 +4,7 @@
 import unittest
 from models.base_model import BaseModel
 from datetime import datetime
+import pep8
 
 
 class TestBaseModel(unittest.TestCase):
@@ -17,6 +18,20 @@ class TestBaseModel(unittest.TestCase):
     def tearDown(self):
         '''disposes created instances for tests'''
         self.model = None
+
+    def test_pep8_baseModel(self):
+        '''Testing for pep8 compliance'''
+        style = pep8.StyleGuide(quiet=True)
+        code_style = style.check_files(['models/base_model.py'])
+        self.assertEqual(code_style.total_errors, 0, 'fix pep8')
+
+    def text_check_baseModel_docstring(self):
+        '''checking if docstrings exists'''
+        self.assertIsNotNone(BaseModel.__doc__)
+        self.assertisNotNOne(BaseModel.__init__.__doc__)
+        self.assertisNotNOne(BaseModel.__str__.__doc__)
+        self.assertisNotNOne(BaseModel.save.__doc__)
+        self.assertisNotNOne(BaseModel.to_dict.__doc__)
 
     def testInstanceAttributes(self):
         '''test basemodel instance attributes created'''
@@ -51,5 +66,7 @@ class TestBaseModel(unittest.TestCase):
         '''Test the to_dict method of BaseModel'''
         model_json = self.model.to_dict()
         self.assertEqual(model_json.__class__, dict)
+        self.assertEqual(model_json['__class__'], 'BaseModel')
+        self.assertIsInstance(model_json['__class__'], str)
         self.assertIsInstance(model_json['created_at'], str)
         self.assertIsInstance(model_json['updated_at'], str)
