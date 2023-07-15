@@ -14,7 +14,7 @@ class TestBaseModel(unittest.TestCase):
         self.model = BaseModel()
         self.model.name = "My First Model"
         self.model.my_number = 89
-    
+
     def tearDown(self):
         '''disposes created instances for tests'''
         self.model = None
@@ -59,7 +59,7 @@ class TestBaseModel(unittest.TestCase):
     def test_save_method(self):
         '''Test the baseModel save method'''
         self.model.save()
-        self.assertNotEqual(self.model.created_at, 
+        self.assertNotEqual(self.model.created_at,
                             self.model.updated_at)
 
     def test_to_dict_method(self):

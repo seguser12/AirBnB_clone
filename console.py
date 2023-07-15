@@ -14,7 +14,8 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     '''class definition of the entry point of command interpreter'''
     prompt = '(hbnb) '
-    classes = {'BaseModel', 'User', 'State', 'City', 'Amenity', 'Place', 'Review'}
+    classes = {'BaseModel', 'User', 'State', 'City',
+               'Amenity', 'Place', 'Review'}
 
     def do_EOF(self, line):
         '''eof to exit program'''
@@ -119,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
         '''
         args = line.split(' ')
         class_name = args[0]
-        class_id  = args[1] if len(args) > 1 else None
+        class_id = args[1] if len(args) > 1 else None
         att_name = args[2] if len(args) > 2 else None
         att_value = args[3] if len(args) > 3 else None
         if not line:
