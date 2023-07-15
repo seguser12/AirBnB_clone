@@ -9,8 +9,10 @@ class FileStorage:
     __file_path = 'file.json'
     __objects = {}
 
-    def all(self):
+    def all(self, cls=None):
         '''return the dictionary __objects'''
+        if cls:
+            return {key: val for (key, val) in self.__objects.items()}
         return self.__objects
 
     def new(self, obj):
@@ -29,6 +31,7 @@ class FileStorage:
     def reload(self):
         '''deserializes the json file'''
         from models.base_model import BaseModel
+        from models.user import User
 
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
